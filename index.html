@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الدليل المرجعي للنظريات التعليمية - محمد عسيري</title>
+    <title>دليل النظريات التعليمية - محمد عسيري</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,364 +11,348 @@
 
     <style>
         :root {
-            --primary-color: #2c3e50; /* كحلي غامق */
-            --accent-color: #e67e22; /* برتقالي ذهبي */
-            --bg-light: #f8f9fa;
-            --text-dark: #2d3436;
-            --white: #ffffff;
-            --border-radius: 8px;
+            --primary: #2c3e50;
+            --secondary: #e67e22;
+            --bg: #ffffff;
+            --text: #2d3436;
+            --light-gray: #f4f6f7;
+        }
+
+        /* إزالة هوامش المتصفح الافتراضية للطباعة */
+        @page {
+            size: A4;
+            margin: 0;
         }
 
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: #555;
             margin: 0;
-            padding: 40px;
-            line-height: 1.6;
+            padding: 20px;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
         }
 
-        /* تنسيق الحاويات */
-        .container {
-            max-width: 900px;
+        .page-container {
+            background: white;
+            width: 21cm;
+            min-height: 29.7cm;
             margin: 0 auto;
-            background: var(--white);
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            border-radius: var(--border-radius);
-        }
-
-        /* تنسيق الرأس */
-        header {
-            text-align: center;
-            border-bottom: 3px solid var(--accent-color);
-            padding-bottom: 20px;
-            margin-bottom: 40px;
+            padding: 1.5cm 1.5cm;
+            box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
 
         h1 {
             font-family: 'Cairo', sans-serif;
-            color: var(--primary-color);
-            font-size: 28px;
-            font-weight: 900;
-            margin-bottom: 10px;
+            color: var(--primary);
+            font-size: 24px;
+            margin: 0 0 5px 0;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 10px;
+            display: inline-block;
         }
 
         .subtitle {
-            font-size: 16px;
+            font-size: 14px;
             color: #7f8c8d;
-            font-weight: 600;
+            margin-bottom: 25px;
         }
 
-        /* العناوين الفرعية */
         h2 {
             font-family: 'Cairo', sans-serif;
-            color: var(--primary-color);
-            border-right: 5px solid var(--accent-color);
-            padding-right: 15px;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-size: 22px;
+            color: var(--primary);
+            font-size: 18px;
+            background: var(--light-gray);
+            padding: 8px 15px;
+            border-right: 5px solid var(--secondary);
+            margin: 20px 0 15px 0;
+            border-radius: 4px;
         }
 
-        /* تنسيق بطاقات النظريات */
+        p {
+            font-size: 12px;
+            margin: 5px 0;
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        .grid-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
         .theory-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 12px;
             background: #fff;
-            border: 1px solid #e1e1e1;
-            border-radius: var(--border-radius);
-            padding: 20px;
-            margin-bottom: 25px;
-            position: relative;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            page-break-inside: avoid; /* منع انقسام البطاقة عند الطباعة */
+            break-inside: avoid;
         }
 
         .theory-card h3 {
             font-family: 'Cairo', sans-serif;
-            color: var(--primary-color);
-            margin-top: 0;
+            font-size: 15px;
+            color: var(--primary);
+            margin: 0 0 5px 0;
             display: flex;
             align-items: center;
-            font-size: 18px;
         }
+        
+        .theory-card h3 span { margin-left: 8px; font-size: 18px; }
 
-        .theory-card h3 span.icon {
-            font-size: 24px;
-            margin-left: 10px;
-        }
-
-        .theory-info {
-            font-size: 14px;
-            color: #636e72;
-            margin-bottom: 10px;
+        .theory-author {
+            font-size: 11px;
+            color: #777;
             font-weight: bold;
+            margin-bottom: 5px;
         }
 
-        .highlight-box {
+        .highlight {
             background-color: #f0f8ff;
-            border-right: 4px solid #3498db;
-            padding: 10px 15px;
-            margin-top: 10px;
-            font-size: 14px;
+            border-right: 3px solid #3498db;
+            padding: 6px 10px;
+            margin-top: 8px;
+            font-size: 11px;
+            border-radius: 2px;
         }
 
-        /* تنسيق الجدول */
+        .full-width-card {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 10px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 13px;
-            page-break-inside: avoid;
+            font-size: 11px;
+            margin-top: 10px;
         }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: right; }
+        th { background-color: var(--primary); color: white; font-family: 'Cairo', sans-serif; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
 
-        th, td {
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            text-align: right;
-        }
-
-        th {
-            background-color: var(--primary-color);
-            color: var(--white);
-            font-family: 'Cairo', sans-serif;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        /* تنسيق التذييل (Footer) */
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
+        /* تنسيق التذييل الجديد */
+        .footer-section {
+            margin-top: 40px;
             text-align: center;
+            padding-top: 20px;
+            border-top: 1px dashed #ccc;
             page-break-inside: avoid;
         }
-
-        .author-name {
+        .name-sign {
             font-family: 'Cairo', sans-serif;
-            font-size: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        .role-sign { color: #666; font-size: 14px; margin-bottom: 15px; }
+        
+        /* تنسيق زر حساب تويتر */
+        .x-link {
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center;
+            text-decoration: none; 
+            color: #2d3436; 
             font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .author-title {
-            color: #7f8c8d;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: bold;
-            font-family: 'Cairo', sans-serif;
-            background: #f1f1f1;
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-
-        .x-logo {
-            width: 16px;
-            height: 16px;
-            margin-left: 8px;
-        }
-
-        /* زر الطباعة - يختفي عند الطباعة الفعلية */
-        .print-btn {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-family: 'Cairo', sans-serif;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            font-size: 16px;
-            font-weight: bold;
-            z-index: 1000;
-            transition: transform 0.2s;
+            background: #f0f2f5; 
+            padding: 8px 25px; 
+            border-radius: 50px; 
+            font-size: 15px;
+            font-family: sans-serif; /* لضمان ظهور اليوزر بشكل صحيح */
+            border: 1px solid #dcdcdc;
+            transition: all 0.3s ease;
         }
         
-        .print-btn:hover {
-            transform: scale(1.05);
+        .x-link:hover {
+            background: #e1e8ed;
+            border-color: #bdc3c7;
         }
 
-        /* إعدادات الطباعة */
+        .x-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            margin-left: 10px; /* مسافة بين الأيقونة والاسم */
+        }
+
+        /* ضبط اتجاه النص للإنجليزي داخل المحتوى العربي */
+        .username-text {
+            direction: ltr;
+            unicode-bidi: embed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         @media print {
-            body {
-                background: white;
-                padding: 0;
+            body { background: none; padding: 0; margin: 0; }
+            .page-container {
+                width: 100%; margin: 0; padding: 1.5cm;
+                box-shadow: none; min-height: auto;
             }
-            .container {
-                box-shadow: none;
-                margin: 0;
-                width: 100%;
-                max-width: 100%;
-                padding: 20px;
-            }
-            .print-btn {
-                display: none;
-            }
-            /* لضمان طباعة ألوان الخلفيات */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-            }
-            h2 {
-                page-break-before: auto;
-            }
+            .print-btn { display: none; }
+            .x-link { -webkit-print-color-adjust: exact; }
+        }
+
+        .print-btn {
+            position: fixed; bottom: 20px; left: 20px;
+            background: var(--secondary); color: white; border: none;
+            padding: 12px 25px; border-radius: 50px; cursor: pointer;
+            font-family: 'Cairo'; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
 
-    <button class="print-btn" onclick="window.print()">🖨️ تحميل الملف كـ PDF</button>
+    <button class="print-btn" onclick="window.print()">🖨️ طباعة / حفظ PDF</button>
 
-    <div class="container">
-        <header>
-            <h1>الدليل المرجعي: النظريات التعليمية وتطبيقاتها في التدريب</h1>
-            <div class="subtitle">رؤية شاملة للمدربين ومصممي الخبرات التعليمية</div>
-        </header>
-
-        <p>تُعد النظريات التعليمية الأساس الذي يبني عليه المصمم التعليمي والمدرب قراراته. هذا الدليل يأخذك في رحلة من نظريات النمو المعرفي، وصولاً إلى استراتيجيات تعليم الكبار.</p>
-
-        <h2>القسم الأول: النظريات الجوهرية في التعلم</h2>
-
-        <div class="theory-card">
-            <h3><span class="icon">🧠</span> 1. نظرية الذكاءات المتعددة (Multiple Intelligences)</h3>
-            <div class="theory-info">👤 الرائد: هوارد غاردنر</div>
-            <p>التعلم ليس "مقاساً واحداً يناسب الجميع". لا يوجد ذكاء واحد، بل ذكاءات متعددة (لغوية، منطقية، حركية، موسيقية...).</p>
-            <div class="highlight-box">
-                <strong>🎯 التطبيق في التدريب:</strong> التنويع هو المفتاح. صمّم أنشطة تخاطب مختلف الحواس لضمان وصول المعلومة لكل الأنماط.
-            </div>
-        </div>
-
-        <div class="theory-card">
-            <h3><span class="icon">⚖️</span> 2. نظرية التطور الأخلاقي (Moral Development)</h3>
-            <div class="theory-info">👤 الرائد: لورانس كولبيرغ</div>
-            <p>التطور القيمي والأخلاقي يمر بمراحل متسلسلة، تتطور مع نضج الإنسان وتجاربه.</p>
-            <div class="highlight-box">
-                <strong>🎯 التطبيق في التدريب:</strong> استخدم دراسات الحالة (Case Studies) في الدورات القيادية لمناقشة اتخاذ القرارات الأخلاقية.
-            </div>
-        </div>
-
-        <div class="theory-card">
-            <h3><span class="icon">🧩</span> 3. نظرية المراحل المعرفية (Cognitive Stages)</h3>
-            <div class="theory-info">👤 الرائد: جان بياجيه</div>
-            <p>العقل ينمو عبر مراحل محددة تعتمد على النضج البيولوجي والتفاعل مع البيئة.</p>
-            <div class="highlight-box">
-                <strong>🎯 التطبيق في التدريب:</strong> راعِ تفاوت قدرات المتدربين، وابنِ المحتوى بشكل يتناسب مع مستوى نضجهم المعرفي.
-            </div>
-        </div>
-
-        <div class="theory-card">
-            <h3><span class="icon">🏗️</span> 4. منطقة النمو الوشيك والدعامات (ZPD & Scaffolding)</h3>
-            <div class="theory-info">👤 الرائد: ليف فيغوتسكي</div>
-            <p>التعلم يحدث في المسافة بين ما يفعله المتعلم وحده، وما يفعله بمساعدة (ZPD)، باستخدام الدعامات (Scaffolding).</p>
-            <div class="highlight-box">
-                <strong>🎯 التطبيق في التدريب:</strong> صمّم أنشطة متدرجة. ابدأ بالتوجيه الكامل ثم انسحب تدريجياً لتعزيز الاستقلالية.
-            </div>
-        </div>
-
-        <div class="theory-card">
-            <h3><span class="icon">👥</span> 5. النظرية الاجتماعية للتعلّم (Social Learning)</h3>
-            <div class="theory-info">👤 الرائد: ألبرت باندورا</div>
-            <p>البشر يتعلمون بالملاحظة وتقليد السلوكيات الفعّالة (النمذجة)، وليس فقط بالتجربة المباشرة.</p>
-            <div class="highlight-box">
-                <strong>🎯 التطبيق في التدريب:</strong> فعّل "لعب الأدوار" والنمذجة الحية. دع المتدربين يشاهدون الأداء الصحيح ثم يطبقونه.
-            </div>
-        </div>
-
-        <div class="theory-card">
-            <h3><span class="icon">👔</span> 6. نظرية تعليم الكبار (Andragogy)</h3>
-            <div class="theory-info">👤 الرائد: مالكوم نولز</div>
-            <p>البالغون متعلمون "موجهون ذاتياً". يتعلمون بفاعلية عندما يرون صلة واضحة بين التدريب واحتياجاتهم العملية.</p>
-            <div class="highlight-box">
-                <strong>🎯 التطبيق في التدريب:</strong> ركّز على التطبيق العملي، واحترم خبراتهم السابقة، واجعل التعلم تشاركياً.
-            </div>
-        </div>
-
-        <h2>القسم الثاني: استراتيجيات وأطر حديثة</h2>
+    <div class="page-container">
         
-        <div class="theory-card">
-            <h3><span class="icon">🔄</span> الصف المقلوب (Flipped Classroom)</h3>
-            <p>نقل "الشرح النظري" إلى ما قبل الجلسة (فيديو/قراءة)، وتخصيص وقت التدريب للتطبيق والنقاش العملي.</p>
+        <div style="text-align: center;">
+            <h1>الدليل المرجعي: النظريات التعليمية وتطبيقاتها</h1>
+            <div class="subtitle">تصميم الخبرات التعليمية والتدريبية للمحترفين</div>
         </div>
 
-        <div class="theory-card">
-            <h3><span class="icon">💻</span> إطار تيباك (TPACK Model)</h3>
-            <p>إطار يدمج بين المعرفة التقنية، التربوية، والمحتوى، لاستخدام التقنية كوسيلة ذكية لخدمة الهدف التدريبي.</p>
+        <p>
+            تُعد النظريات التعليمية البوصلة التي توجه قرارات المدرب والمصمم التعليمي. هذا الدليل المختصر يجمع لك أهم النظريات من النمو المعرفي إلى تعليم الكبار، مع تطبيقات عملية مباشرة.
+        </p>
+
+        <h2>1️⃣ النظريات الجوهرية (التأسيس)</h2>
+        <div class="grid-wrapper">
+            
+            <div class="theory-card">
+                <h3><span>🧠</span> الذكاءات المتعددة</h3>
+                <div class="theory-author">👤 هوارد غاردنر</div>
+                <p>لا يوجد ذكاء واحد، بل أنماط متعددة (لغوية، منطقية، حركية، اجتماعية...).</p>
+                <div class="highlight">
+                    <strong>🎯 في التدريب:</strong> نوّع الأنشطة (بصري، حركي، سمعي) لتصل للجميع.
+                </div>
+            </div>
+
+            <div class="theory-card">
+                <h3><span>⚖️</span> التطور الأخلاقي</h3>
+                <div class="theory-author">👤 لورانس كولبيرغ</div>
+                <p>القيم والأخلاق تتطور عبر مراحل نضج متسلسلة.</p>
+                <div class="highlight">
+                    <strong>🎯 في التدريب:</strong> استخدم "دراسات الحالة" المعقدة أخلاقياً في دورات القيادة.
+                </div>
+            </div>
+
+            <div class="theory-card">
+                <h3><span>🧩</span> المراحل المعرفية</h3>
+                <div class="theory-author">👤 جان بياجيه</div>
+                <p>بناء المعرفة يعتمد على النضج البيولوجي والتفاعل مع البيئة.</p>
+                <div class="highlight">
+                    <strong>🎯 في التدريب:</strong> لا تفترض المعرفة المسبقة؛ تدرج من المحسوس للمجرد.
+                </div>
+            </div>
+
+            <div class="theory-card">
+                <h3><span>🏗️</span> منطقة النمو (ZPD)</h3>
+                <div class="theory-author">👤 ليف فيغوتسكي</div>
+                <p>التعلم يقع بين "ما أفعله وحدي" و "ما أفعله بمساعدة" (Scaffolding).</p>
+                <div class="highlight">
+                    <strong>🎯 في التدريب:</strong> قدم دعماً كاملاً في البداية، ثم انسحب تدريجياً.
+                </div>
+            </div>
+
+            <div class="theory-card">
+                <h3><span>👥</span> التعلم الاجتماعي</h3>
+                <div class="theory-author">👤 ألبرت باندورا</div>
+                <p>نتعلم عبر الملاحظة والنمذجة (القدوة)، وليس التجربة فقط.</p>
+                <div class="highlight">
+                    <strong>🎯 في التدريب:</strong> فعّل "لعب الأدوار"؛ اعرض الأداء الصحيح ليُقلّده المتدرب.
+                </div>
+            </div>
+
+            <div class="theory-card">
+                <h3><span>👔</span> تعليم الكبار (Andragogy)</h3>
+                <div class="theory-author">👤 مالكوم نولز</div>
+                <p>الكبار يتعلمون بالتوجيه الذاتي وعندما تلامس المعرفة احتياجهم.</p>
+                <div class="highlight">
+                    <strong>🎯 في التدريب:</strong> اربط كل معلومة بتطبيق عملي وفائدة فورية لعملهم.
+                </div>
+            </div>
         </div>
 
-        <h2>القسم الثالث: مصفوفة المقارنة والتطبيق</h2>
+        <h2>2️⃣ استراتيجيات معاصرة</h2>
+        <div class="grid-wrapper">
+            <div class="full-width-card">
+                <h3>🔄 الصف المقلوب (Flipped Classroom)</h3>
+                <p>نقل "النظري" للمنزل (فيديو/قراءة) وتخصيص وقت "الجلسة" للتطبيق العملي والنقاش فقط.</p>
+            </div>
+            <div class="full-width-card">
+                <h3>💻 إطار تيباك (TPACK)</h3>
+                <p>دمج (التقنية + التربية + المحتوى) بذكاء، بحيث تكون التقنية خادمة للهدف وليست غاية.</p>
+            </div>
+        </div>
+
+        <h2>3️⃣ مصفوفة المقارنة السريعة</h2>
         <table>
             <thead>
                 <tr>
-                    <th width="20%">النظرية / الإطار</th>
+                    <th width="20%">النظرية</th>
                     <th width="15%">المساهم</th>
-                    <th>القيمة المضافة (نقاط القوة)</th>
-                    <th>حدود التطبيق (تنبيهات)</th>
+                    <th>أبرز نقاط القوة (متى تستخدمها؟)</th>
+                    <th>تنبيهات (حدود التطبيق)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>الذكاءات المتعددة</td>
                     <td>غاردنر</td>
-                    <td>تنويع الأنشطة لكسر الملل وملاءمة الجميع.</td>
-                    <td>ليست نموذج تصميم كامل، بل أداة للتنويع.</td>
+                    <td>لتنويع الأنشطة وكسر الرتابة.</td>
+                    <td>أداة تنويع وليست منهجية تصميم كاملة.</td>
                 </tr>
                 <tr>
                     <td>التطور الأخلاقي</td>
                     <td>كولبيرغ</td>
-                    <td>ممتازة لتدريب القيم والقيادة.</td>
-                    <td>تركز على الجانب القيمي ولا تغطي المهارات.</td>
+                    <td>لتدريب القيم، النزاهة، والقيادة.</td>
+                    <td>لا تغطي المهارات التقنية أو الأدائية.</td>
                 </tr>
                 <tr>
                     <td>المراحل المعرفية</td>
                     <td>بياجيه</td>
-                    <td>فهم بناء المعلومة وتدرجها المنطقي.</td>
-                    <td>تحتاج تكييفاً عند تدريب الكبار.</td>
+                    <td>لفهم كيفية تدرج صعوبة المعلومة.</td>
+                    <td>غالباً ترتبط بالأعمار، تحتاج تكييف للكبار.</td>
                 </tr>
                 <tr>
                     <td>منطقة النمو (ZPD)</td>
                     <td>فيغوتسكي</td>
-                    <td>قوية في التوجيه (Coaching) والتدرج.</td>
-                    <td>تتطلب مهارة عالية في التقييم وسحب الدعم.</td>
+                    <td>للتدريب المهاري (Coaching) المتدرج.</td>
+                    <td>تتطلب مهارة مدرب عالية في التقييم.</td>
                 </tr>
                 <tr>
                     <td>تعليم الكبار</td>
                     <td>نولز</td>
-                    <td><strong>عمود التدريب المهني والمؤسسي.</strong></td>
-                    <td>يفضل دمجها مع نماذج تصميم مثل ADDIE.</td>
+                    <td><strong>أساس التدريب الوظيفي والمؤسسي.</strong></td>
+                    <td>تُدمج مع نماذج التصميم (مثل ADDIE).</td>
                 </tr>
                 <tr>
                     <td>TPACK</td>
-                    <td>ميشرا وكوهلر</td>
-                    <td>دمج التقنية بذكاء وعقلانية.</td>
-                    <td>هي كفاءة للمدرب وليست نموذج تصميم.</td>
+                    <td>ميشرا</td>
+                    <td>لدمج التقنية بعقلانية وجدوى.</td>
+                    <td>هي "كفاءة للمدرب" وليست نموذجاً للدورة.</td>
                 </tr>
             </tbody>
         </table>
 
-        <div class="footer">
-            <div class="author-name">محمد علي عسيري</div>
-            <div class="author-title">مدرب وكوتش تطوير الأداء</div>
-            <br>
-            <a href="https://x.com/mohdasiri99" target="_blank" class="social-link">
-                <svg class="x-logo" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+        <div class="footer-section">
+            <div class="name-sign">محمد علي عسيري</div>
+            <div class="role-sign">مدرب وكوتش تطوير الأداء</div>
+            
+            <a href="https://x.com/mohdasiri99" target="_blank" class="x-link">
+                <svg class="x-icon" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                 </svg>
-                @mohdasiri99
+                <span class="username-text">@mohdasiri99</span>
             </a>
         </div>
-
     </div>
+
 </body>
 </html>
